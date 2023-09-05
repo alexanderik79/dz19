@@ -9,6 +9,7 @@ import org.hibernate.Transaction;
 import org.hibernate.query.Query;
 
 
+import java.math.BigDecimal;
 import java.util.List;
 
 public class ProductDaoImpl implements ProductDao{
@@ -30,7 +31,7 @@ public class ProductDaoImpl implements ProductDao{
     @Override
     public List<Product> findAll() {
         final Session session = factory.openSession();
-        List products = session.createQuery("FROM Products").getResultList();
+        List products = session.createQuery("FROM Product").getResultList();
         session.close();
         return products;
     }
@@ -39,8 +40,8 @@ public class ProductDaoImpl implements ProductDao{
     public void updateById(int id) {
         final Session session = factory.openSession();
         Transaction t = session.beginTransaction();
-        Query query = session.createQuery("update Products set price=:correctPrice where id=:id");
-        query.setParameter("correctPrice", 333.30);
+        Query query = session.createQuery("update Product set price= :correctPrice where id= :id");
+        query.setParameter("correctPrice", new BigDecimal(333.30));
         query.setParameter("id", id);
         query.executeUpdate();
         t.commit();
@@ -63,6 +64,30 @@ public class ProductDaoImpl implements ProductDao{
             Long orderCount = (Long) result[1];
 
             System.out.println("Имя клиента: " + customerName + ", Количество заказов: " + orderCount);
+        }
+    }
+
+    public void countExtended(){
+        final Session session = factory.openSession();
+        String hql =
+                "SELECT c.nname, o.nname, o.totalSum, COUNT(p.id) " +
+                        "FROM Customer c " +
+                        "LEFT JOIN c.orders o " +
+                        "INNER JOIN o.orderProducts op " +
+                        "INNER JOIN op.product p " +
+                        "GROUP BY c.nname, o.nname, o.totalSum";
+
+        Query query = session.createQuery(hql);
+        List<Object[]> results = query.list();
+
+        for (Object[] result : results) {
+            String customerName = (String) result[0];
+            String orderName = (String) result[1];
+            BigDecimal sum = new BigDecimal(String.valueOf(result[2]));
+            Long orderCount = (Long) result[3];
+
+            System.out.println("Имя клиента: " + customerName + ", Номер заказа: " + orderName +
+                    ", Сумма: " + sum + ", Кол. заказов: " + orderCount);
         }
     }
 }

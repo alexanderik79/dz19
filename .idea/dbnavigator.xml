@@ -13,18 +13,20 @@
   </component>
   <component name="DBNavigator.Project.DatabaseConsoleManager">
     <connection id="c77786a0-50cc-43c4-958d-6284729e8e28">
-      <console name="Connection" type="STANDARD" schema="dz19" session="Main"><![CDATA[SELECT c.nname, COUNT(o.id)
-FROM "public".customer c
-LEFT JOIN "public".orders o ON c.id = o.customer_id
-GROUP BY c.nname;
-
-SELECT * --o.nname, p.nname
+      <console name="Connection" type="STANDARD" schema="dz19" session="Main"><![CDATA[SELECT * --o.nname, p.nname
 FROM "public".orders o
 INNER JOIN "public".order_product op ON o.id = op.order_id
 INNER JOIN "public".products p ON op.product_id = p.id
 INNER JOIN "public".order_details od ON o.id = od.orders_id;
 
-select * from "public".products;]]></console>
+select * from "public".products;
+
+SELECT c.nname, o.nname, o.total_sum, COUNT(p.id)
+FROM "public".customers c
+LEFT JOIN "public".orders o ON c.id = o.customer_id
+INNER JOIN "public".order_product op ON o.id = op.order_id
+INNER JOIN "public".products p ON op.product_id = p.id
+GROUP BY c.nname, o.nname, o.total_sum;]]></console>
     </connection>
   </component>
   <component name="DBNavigator.Project.DatabaseEditorStateManager">

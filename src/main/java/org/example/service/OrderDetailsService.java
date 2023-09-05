@@ -10,4 +10,7 @@ public class OrderDetailsService {
     public void save (OrderDetails orderDetails){
         orderDetailsDao.save(orderDetails);
     }
+    public List<OrderDetails> getAll(){
+        return orderDetailsDao.findAll();
+    }
 }
