@@ -3,6 +3,7 @@ package org.example.entity;
 import lombok.*;
 
 import javax.persistence.*;
+import java.math.BigDecimal;
 import java.util.List;
 import java.util.Set;
 
@@ -22,7 +23,7 @@ public class Order {
     @Column(name = "nname")
     private String nname;
     @Column(name = "total_sum")
-    private double totalSum;
+    private BigDecimal totalSum;
 
     @ManyToOne
     @JoinColumn(name = "customer_id")

@@ -3,6 +3,7 @@ package org.example.entity;
 import lombok.*;
 
 import javax.persistence.*;
+import java.math.BigDecimal;
 import java.util.List;
 import java.util.Set;
 
@@ -20,7 +21,7 @@ public class Product {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
     private String nname;
-    private double price;
+    private BigDecimal price;
     private int quantity;
 
     @ManyToMany(mappedBy = "products")

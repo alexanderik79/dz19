@@ -18,10 +18,13 @@ FROM "public".customer c
 LEFT JOIN "public".orders o ON c.id = o.customer_id
 GROUP BY c.nname;
 
-SELECT o.id, o.nname, p.id, p.nname
+SELECT * --o.nname, p.nname
 FROM "public".orders o
 INNER JOIN "public".order_product op ON o.id = op.order_id
-INNER JOIN "public".products p ON op.product_id = p.id;]]></console>
+INNER JOIN "public".products p ON op.product_id = p.id
+INNER JOIN "public".order_details od ON o.id = od.orders_id;
+
+select * from "public".products;]]></console>
     </connection>
   </component>
   <component name="DBNavigator.Project.DatabaseEditorStateManager">

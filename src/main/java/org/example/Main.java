@@ -10,6 +10,7 @@ public class Main {
         tableFiller.customersFill();
         tableFiller.productsFill();
         tableFiller.ordersFill();
+        tableFiller.orderDetailsFill();
 
 
 //        List<Customer> customers = List.of(Customer.builder()
