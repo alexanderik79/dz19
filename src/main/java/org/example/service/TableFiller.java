@@ -33,15 +33,15 @@ public class TableFiller {
     public void customersFill(){
         final CustomerService customerService = new CustomerService();
         Customer customer = new Customer();
-        customer.setNname("Alexander");
-        customer.setSurnname("Anchor");
+        customer.setNname("Alex");
+        customer.setSurnname("Anch");
         customer.setPhone("+11111");
         customer.setUser(users.get(0));
         customers.add(customer);
 
         Customer customer2 = new Customer();
         customer2.setNname("Bred");
-        customer2.setSurnname("Borland");
+        customer2.setSurnname("Borl");
         customer2.setPhone("+22222");
         customer2.setUser(users.get(1));
         customers.add(customer2);

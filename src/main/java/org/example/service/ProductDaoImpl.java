@@ -63,31 +63,32 @@ public class ProductDaoImpl implements ProductDao{
             String customerName = (String) result[0];
             Long orderCount = (Long) result[1];
 
-            System.out.println("Имя клиента: " + customerName + ", Количество заказов: " + orderCount);
+            System.out.println("Ім'я клієнта: " + customerName + ", Кількість замовлень: " + orderCount);
         }
     }
 
     public void countExtended(){
         final Session session = factory.openSession();
         String hql =
-                "SELECT c.nname, o.nname, o.totalSum, COUNT(p.id) " +
+                "SELECT c.nname, c.surnname, o.nname, o.totalSum, COUNT(p.id) " +
                         "FROM Customer c " +
                         "LEFT JOIN c.orders o " +
-                        "INNER JOIN o.orderProducts op " +
-                        "INNER JOIN op.product p " +
-                        "GROUP BY c.nname, o.nname, o.totalSum";
+                        "INNER JOIN o.products p " +
+                        "GROUP BY c.nname, c.surnname, o.nname, o.totalSum";
 
         Query query = session.createQuery(hql);
         List<Object[]> results = query.list();
 
         for (Object[] result : results) {
             String customerName = (String) result[0];
-            String orderName = (String) result[1];
-            BigDecimal sum = new BigDecimal(String.valueOf(result[2]));
-            Long orderCount = (Long) result[3];
+            String customerSurnName = (String) result[1];
+            String orderName = (String) result[2];
+            BigDecimal sum = new BigDecimal(String.valueOf(result[3]));
+            Long prodCount = (Long) result[4];
 
-            System.out.println("Имя клиента: " + customerName + ", Номер заказа: " + orderName +
-                    ", Сумма: " + sum + ", Кол. заказов: " + orderCount);
+            System.out.println("Ім'я клієнта: " + customerName + ", Прізвище клієнта: "
+                    +customerSurnName+ ", Номер замовлення: " + orderName +
+                    ", Сума: " + sum + ", Кількість продуктів: " + prodCount);
         }
     }
 }
