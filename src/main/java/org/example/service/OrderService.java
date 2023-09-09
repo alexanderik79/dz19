@@ -1,7 +1,7 @@
 package org.example.service;
 
 import org.example.entity.Order;
-import org.example.entity.User;
+import org.example.service.daoimplements.OrderDaoImpl;
 
 public class OrderService {
     private final OrderDaoImpl orderDao = new OrderDaoImpl();

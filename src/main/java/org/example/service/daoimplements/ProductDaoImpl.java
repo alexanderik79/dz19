@@ -1,7 +1,10 @@
-package org.example.service;
+package org.example.service.daoimplements;
 
+
+import org.example.entity.Customer;
+import org.example.entity.Order;
 import org.example.entity.Product;
-import org.example.entity.User;
+import org.example.service.daointerfaces.ProductDao;
 import org.example.util.HibernateUtils;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
@@ -12,7 +15,7 @@ import org.hibernate.query.Query;
 import java.math.BigDecimal;
 import java.util.List;
 
-public class ProductDaoImpl implements ProductDao{
+public class ProductDaoImpl implements ProductDao {
     final SessionFactory factory = HibernateUtils.getSessionFactory();
     @Override
     public void save(Product product) {
@@ -66,8 +69,15 @@ public class ProductDaoImpl implements ProductDao{
             System.out.println("Ім'я клієнта: " + customerName + ", Кількість замовлень: " + orderCount);
         }
     }
+    public List<Customer> countOrders2(){
+        final Session session = factory.openSession();
+        String hql = "FROM Customer";
+        List results = session.createQuery(hql).getResultList();
+        session.close();
+        return results;
+    }
 
-    public void countExtended(){
+    public void countExtended() {
         final Session session = factory.openSession();
         String hql =
                 "SELECT c.nname, c.surnname, o.nname, o.totalSum, COUNT(p.id) " +
@@ -90,5 +100,12 @@ public class ProductDaoImpl implements ProductDao{
                     +customerSurnName+ ", Номер замовлення: " + orderName +
                     ", Сума: " + sum + ", Кількість продуктів: " + prodCount);
         }
+    }
+    public List<Order> countExtended2() {
+        final Session session = factory.openSession();
+        String hql = "SELECT o FROM Order o LEFT JOIN FETCH o.products";
+        List results = session.createQuery(hql).getResultList();
+        session.close();
+        return results;
     }
 }

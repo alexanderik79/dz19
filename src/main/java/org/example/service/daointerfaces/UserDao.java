@@ -1,4 +1,4 @@
-package org.example.service;
+package org.example.service.daointerfaces;
 
 import org.example.entity.User;
 

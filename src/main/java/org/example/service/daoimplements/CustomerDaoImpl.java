@@ -1,6 +1,7 @@
-package org.example.service;
+package org.example.service.daoimplements;
 
-import org.example.entity.User;
+import org.example.entity.Customer;
+import org.example.service.daointerfaces.CustomerDao;
 import org.example.util.HibernateUtils;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
@@ -8,24 +9,29 @@ import org.hibernate.Transaction;
 
 import java.util.List;
 
-public class UserDaoImpl implements UserDao{
+public class CustomerDaoImpl implements CustomerDao {
     final SessionFactory factory = HibernateUtils.getSessionFactory();
     @Override
-    public void save(User user) {
+    public void save(Customer customer) {
         final Session session = factory.openSession();
         final Transaction t = session.beginTransaction();
-        session.save(user);
+        session.save(customer);
         t.commit();
         session.close();
     }
 
     @Override
-    public User getUserById(int id) {
+    public Customer getById(int id) {
         return null;
     }
 
     @Override
-    public List<User> findAll() {
-       return null;
+    public List<Customer> findAll() {
+        return null;
+    }
+
+    @Override
+    public void updateById(int id) {
+
     }
 }

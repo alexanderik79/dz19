@@ -24,6 +24,6 @@ public class Product {
     private BigDecimal price;
     private int quantity;
 
-    @ManyToMany(mappedBy = "products")
+    @ManyToMany(mappedBy = "products", fetch = FetchType.LAZY)
     private List<Order> orders;
 }

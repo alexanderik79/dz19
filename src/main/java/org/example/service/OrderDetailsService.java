@@ -1,7 +1,7 @@
 package org.example.service;
 
-import org.example.entity.Customer;
 import org.example.entity.OrderDetails;
+import org.example.service.daoimplements.OrderDetailsDaoImpl;
 
 import java.util.List;
 

@@ -29,7 +29,7 @@ public class Customer {
     @JoinColumn(name = "user_id")
     private User user;
 
-    @OneToMany(mappedBy = "customer")
+    @OneToMany(mappedBy = "customer", fetch = FetchType.EAGER)
     private List<Order> orders;
 
 }

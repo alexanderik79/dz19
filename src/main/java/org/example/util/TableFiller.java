@@ -1,6 +1,7 @@
-package org.example.service;
+package org.example.util;
 
 import org.example.entity.*;
+import org.example.service.*;
 import org.hibernate.type.LocalDateTimeType;
 
 import java.math.BigDecimal;
@@ -212,7 +213,7 @@ public class TableFiller {
     }
 
     public int getRndm(){
-        int p = (int) (Math.random()*5);
+        int p = (int) (Math.random()*6);
         return p;
     }
 }

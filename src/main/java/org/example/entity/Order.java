@@ -1,6 +1,8 @@
 package org.example.entity;
 
 import lombok.*;
+import org.hibernate.annotations.Fetch;
+import org.hibernate.annotations.FetchMode;
 
 import javax.persistence.*;
 import java.math.BigDecimal;
@@ -34,6 +36,7 @@ public class Order {
     private OrderDetails orderDetails;
 
     @ManyToMany
+    @Fetch(FetchMode.SUBSELECT)
     @JoinTable(
             name = "order_product",
             joinColumns = @JoinColumn(name = "order_id"),
