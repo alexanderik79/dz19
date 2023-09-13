@@ -15,9 +15,9 @@ public class OrderDetailsService {
             logger.error("order details is NULL!!!");
         }
         else {
-            logger.warn("Start saving order details " + orderDetails.getOrder().getNname() + ".");
+            logger.warn("Start saving details " + orderDetails.getOrder().getNname() + ".");
             orderDetailsDao.save(orderDetails);
-            logger.info("order details" + orderDetails.getOrder().getNname() + " was saved.");
+            logger.info("details " + orderDetails.getOrder().getNname() + " was saved.");
         }
     }
     public List<OrderDetails> getAll(){

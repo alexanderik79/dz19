@@ -14,9 +14,9 @@ public class OrderService {
             logger.error("order is NULL!!!");
         }
         else {
-            logger.warn("Start saving order " + order.getNname() + ".");
+            logger.warn("Start saving " + order.getNname() + ".");
             orderDao.save(order);
-            logger.info("order " + order.getNname() + " was saved.");
+            logger.info(order.getNname() + " was saved.");
         }
     }
 }
