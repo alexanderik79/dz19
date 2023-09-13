@@ -19,19 +19,4 @@ public class CustomerDaoImpl implements CustomerDao {
         t.commit();
         session.close();
     }
-
-    @Override
-    public Customer getById(int id) {
-        return null;
-    }
-
-    @Override
-    public List<Customer> findAll() {
-        return null;
-    }
-
-    @Override
-    public void updateById(int id) {
-
-    }
 }

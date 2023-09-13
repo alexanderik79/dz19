@@ -20,7 +20,6 @@ public class OrderDetailsDaoImpl implements OrderDetailsDao {
         return orderDetails;
     }
 
-
     @Override
     public void save(OrderDetails orderDetails) {
         final Session session = factory.openSession();
@@ -28,14 +27,5 @@ public class OrderDetailsDaoImpl implements OrderDetailsDao {
         session.save(orderDetails);
         t.commit();
         session.close();
-    }
-    @Override
-    public Order getById(int id) {
-        return null;
-    }
-
-    @Override
-    public void updateById(int id) {
-
     }
 }

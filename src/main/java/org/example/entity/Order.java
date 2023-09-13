@@ -36,7 +36,7 @@ public class Order {
     private OrderDetails orderDetails;
 
     @ManyToMany
-    @Fetch(FetchMode.SUBSELECT)
+    @Fetch(FetchMode.SELECT)
     @JoinTable(
             name = "order_product",
             joinColumns = @JoinColumn(name = "order_id"),

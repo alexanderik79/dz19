@@ -19,14 +19,4 @@ public class UserDaoImpl implements UserDao {
         t.commit();
         session.close();
     }
-
-    @Override
-    public User getUserById(int id) {
-        return null;
-    }
-
-    @Override
-    public List<User> findAll() {
-       return null;
-    }
 }

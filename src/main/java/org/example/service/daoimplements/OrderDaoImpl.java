@@ -19,19 +19,4 @@ public class OrderDaoImpl implements OrderDao {
         t.commit();
         session.close();
     }
-
-    @Override
-    public Order getById(int id) {
-        return null;
-    }
-
-    @Override
-    public List<Order> findAll() {
-        return null;
-    }
-
-    @Override
-    public void updateById(int id) {
-
-    }
 }
